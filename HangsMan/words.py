@@ -7,7 +7,7 @@ class Words:
 
     def __init__(self,word:str) -> None:
         self.word = word
-        self.score = len(word)*2
+        self.score = len(word.remove(" "))*2
         if "z" in word or "q" in word or "ñ" in word or "y" in word or "k" in word or "x" in word or "w" in word:
             self.score += 2
         self._status = False

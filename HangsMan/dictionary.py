@@ -6,7 +6,7 @@ class Dictionary:
     dictionary_len =  int
 
     def __init__(self) -> None:
-        with open("/home/familiagc/Documentos/Angie/POO/Python/archivos/words.txt","r", encoding="utf-8") as f:
+        with open("D:/Angie/python/POO/platzi_courses/archivos/words.txt","r", encoding="utf-8") as f:
             for line in f:
                 self.actual_words.append(Words(line.strip("\n")))
         self.dictionary_len = len(self.actual_words)
@@ -17,7 +17,7 @@ class Dictionary:
             print(f"Ingresa palabras de mas de 2 letras sin números {input_word}")
         else:
             self.actual_words.append(Words(input_word))
-            with open("/home/familiagc/Documentos/Angie/POO/Python/archivos/words.txt","a", encoding="utf-8") as f:
+            with open("D:/Angie/python/POO/platzi_courses/archivos/words.txt","a", encoding="utf-8") as f:
                 f.write("\n")
                 f.write(input_word)
             self.dictionary_len += 1
@@ -31,9 +31,9 @@ class Dictionary:
             for i in result[::-1]:
                 self.actual_words.pop(i)
             self.dictionary_len = len(self.actual_words)
-            with open(r"/home/familiagc/Documentos/Angie/POO/Python/archivos/words.txt", 'r', encoding="utf-8") as fp:
+            with open(r"D:/Angie/python/POO/platzi_courses/archivos/words.txt", 'r', encoding="utf-8") as fp:
                 lines = fp.readlines()
-            with open(r"/home/familiagc/Documentos/Angie/POO/Python/archivos/words.txt", 'w', encoding="utf-8") as fp:
+            with open(r"D:/Angie/python/POO/platzi_courses/archivos/words.txt", 'w', encoding="utf-8") as fp:
                 for number, line in enumerate(lines):
                     if number not in result:
                         fp.write(line)
