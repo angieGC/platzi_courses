@@ -1,4 +1,4 @@
-from account import Account
+from Python.poo.account import Account
 
 class User(Account):
 
