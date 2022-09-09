@@ -27,7 +27,7 @@ class Game:
         if len(input_letter) != 1 or input_letter.isdigit():
             print(f"Ingresa una sola letra sin números: {input_letter}")
         elif input_letter in self.letters_left and input_letter in str(unidecode.unidecode(self.find_word.word.replace(" ","")).strip().lower()):
-            print(f"La letra {input_letter} SI se encuentra en la palabra")
+            print(f"La letra {input_letter.upper()} SI se encuentra en la palabra")
             self.letters_left = [i for i in self.letters_left if i != input_letter]
             self.letters_word = [i for i in self.letters_word if i != input_letter]
             actual_word = unidecode.unidecode(self.find_word.word.replace(" ","")).strip().lower()
@@ -42,7 +42,7 @@ class Game:
                 print(f"Utilizaste todas las letras")
                 self.end_game = True
         elif input_letter in self.letters_left:
-            print(f"La letra {input_letter} NO se encuentra en la palabra")
+            print(f"La letra {input_letter.upper()} NO se encuentra en la palabra")
             self._lifes -= 1
             if self._lifes == 0:
                 self.end_game = True

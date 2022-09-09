@@ -1,4 +1,3 @@
-
 class Words:
     size_word = int
     word = str

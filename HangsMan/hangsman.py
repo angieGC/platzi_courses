@@ -52,7 +52,7 @@ class Hangsman():
         while my_game.end_game == False and my_game.completed == False :
             
             print(f"Adivina la plabra {self.player_name}!!\n")
-            print(str(my_game.status_word))
+            print(''.join(my_game.status_word))
             option = input("Selecione la opcion\n1.Ingresar una letra\n2.Ingrese la palabra\n3.Reiniciar juego, Las vidas no se reinician\n")
             if option.isdigit():
                 option = int(option)
@@ -92,6 +92,33 @@ class Hangsman():
             else:
                 print("Opcion errada")
     def quit_game(self):
+        top_results = []
+        with open("/home/familiagc/Documentos/Angie/POO/Python/HangsMan/archivos/top.txt","r", encoding="utf-8") as f:
+            for line in f:
+                top_results.append(line.strip("\n").split(" "))
+        top_results.append([self.player_name,str(self.total_score)])
+        index_i = 0
+        for i in top_results:
+            if len(i) == 1:
+                top_results.pop(index_i)
+            else:
+                index_i +=1
+        iter_loop = 0
+        while iter_loop < len(top_results)*2:
+            for i in range(1,len(top_results)-1):
+                if int(top_results[i][1]) < int(top_results[i+1][1]):
+                    top_results[i], top_results[i+1] = top_results[i+1], top_results[i]
+            iter_loop += 1
+            
+        
+        with open("/home/familiagc/Documentos/Angie/POO/Python/HangsMan/archivos/top.txt","w", encoding="utf-8") as f:
+            for i in range(11):
+                if i > len(top_results)-1:
+                    break
+                elif  0 < i < len(top_results):
+                    f.write("\n")
+                f.write(' '.join(top_results[i]))
+                
         self.playing = False
 
 
